@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+  <div class="container">
+    <a class="navbar-brand" href="/products" style="font-weight: bold; font-size: 1.2rem; color: #333;">
+      <i class="fas fa-shopping-basket" style="margin-right: 10px; font-size: 1.5rem; color: #666;"></i>
+      Shopping Cart
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/" style="color: #333; transition: color 0.2s ease;">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products" style="color: #333; transition: color 0.2s ease;">
+            Products
+          </a>
+        </li>
+        <%if(currentUser && currentUser.role === 'seller'){%>
+        <li class="nav-item">
+          <a class="nav-link hover-effect" href="/products/new" tabindex="-1" aria-disabled="true" style="color: #333;  transition: color 0.2s ease;">
+            New
+          </a>
+        </li>
+        <%}%>
+      </ul>
+      <div class="navbar-nav ml-auto">
+        <%if(!currentUser){%>
+          <a href="/login" class="nav-link" style="color: #333; transition: color 0.2s ease;">Login</a> 
+        <%} else{%>
+          <a href="#" class="nav-link text-capitalize" style="color: #333; transition: color 0.2s ease;">Hello <%=currentUser.username%></i> 
+            <a href="/user/cart" class="nav-link" style="color: #333; transition: color 0.2s ease;">
+              <i class="fas fa-shopping-cart" style="margin-right: 5px; font-size: 1.2rem; color: #666;"></i>
+              <sup><span class="badge bg-danger" style="font-size: 0.8rem; padding: 0.2rem 0.5rem; border-radius: 10px;"><%=currentUser.cart.length%></span></sup> 
+            </a>
+          <a href="/logout" class="nav-link" style="color: #333; transition: color 0.2s ease;">Logout</a>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  
+  .nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  .nav-link:hover, a:hover {
+    color: tomato;
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  .navbar-nav .nav-item {
+    margin-right: 20px;
+  }
+  .navbar-nav .nav-link.active {
+    color: tomato;
+  }
+  .navbar-nav .nav-link.active::after {
+    transform: scaleX(1);
+  }
+</style>
