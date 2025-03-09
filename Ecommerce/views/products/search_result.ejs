@@ -1,0 +1,79 @@
+<% layout('layouts/boilerplate') -%>
+
+<section class="container">
+
+    <!-- <section id="heading"> -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #f7f7f7; padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <input id="search-input" type="text" placeholder="Search products..." 
+                   style="padding: 10px; border: none; border-radius: 10px; 
+                          font-size: 1.2rem; width: 250px; height: 40px;">
+            <button id="search-button" type="submit" 
+                    style="padding: 10px 20px; border: none; border-radius: 10px; 
+                           background-color: #333; color: #fff; font-size: 1.2rem; 
+                           cursor: pointer;">
+              Search
+            </button>
+          </div>
+        <h4>Search Results for "<%= query %>"</h4>
+    <!-- </section> -->
+    <div class="row products">
+        <% if (products.length) { %>
+            <% for (let product of products) { %>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card shadow-sm mx-auto position-relative" style="width: 20rem;">
+                        <img src="<%= product.img %>" class="card-img-top" alt="item image">
+                        <span class="badge rounded-pill bg-light text-dark w-25 position-absolute translate-middle-y" style="top:41%;left:5%"><%= product.avgRating %> &star; | <%= product.reviews.length %></span>
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-between align-items-center">
+                                <span><%= product.name %></span>
+                                <span class="btn like-btn" product-id="<%= product._id %>">
+                                    <% if (currentUser && currentUser.wishList.includes(product._id)) { %>
+                                        <i class="fas fa-heart"></i>
+                                    <% } else { %>
+                                        <i class="far fa-heart"></i>
+                                    <% } %>
+                                </span>
+                            </h5>
+                            <p class="card-text fw-light"><%= product.desc %></p>
+                            <% if (product.reviews.length) { %>
+                                <p class="text-muted"><%= product.reviews.length %> reviews</p>
+                            <% } else { %>
+                                <p class="text-muted">No reviews</p>
+                            <% } %>
+                            <h6 class="card-title">
+                                <span class="fw-lighter fs-6 text-decoration-line-through">Rs.<%= product.price * 2 %></span>
+                                Rs.<%= product.price %>
+                                <span class="fw-light fs-6 text-warning">( 50 % OFF )</span>
+                            </h6>
+                            <a href="/products/<%= product._id %>" class="btn btn-sm show-btn">View Now</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } else { %>
+            <p>No products found for your search.</p>
+        <% } %>
+    </div>
+</section>
+
+<script>
+    document.getElementById('search-button').addEventListener('click', function() {
+      const query = document.getElementById('search-input').value;
+      console.log(query);
+      if (query) {
+        window.location.href = `/search?query=${query}`;
+      }
+    });
+  
+    // Optional: Allow search on Enter key press
+    document.getElementById('search-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        const query = document.getElementById('search-input').value;
+        if (query) {
+          window.location.href = `/search?query=${query}`;
+        }
+      }
+    });
+  </script>
+
+<script src="/js/common.js"></script>

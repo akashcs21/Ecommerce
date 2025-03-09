@@ -1,0 +1,49 @@
+<% if(success && success.length){ %> 
+  <div class="alert alert-success alert-dismissible fade show notification" role="alert">
+      <p><%=success%> </p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        const alert = document.querySelector('.alert.alert-success');
+        if (alert) {
+          alert.classList.remove('show');
+          setTimeout(() => {
+            alert.remove();
+          }, 400);
+        }
+      }, 2000);
+    </script>
+<% } %>
+
+<% if(error && error.length){ %> 
+  <div class="alert alert-danger alert-dismissible fade show notification" role="alert">
+      <p><%=error%> </p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        const alert = document.querySelector('.alert.alert-danger');
+        if (alert) {
+          alert.classList.remove('show');
+          setTimeout(() => {
+            alert.remove();
+          }, 400);
+        }
+      }, 2000);
+    </script>
+<% } %>
+<style>
+  .notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+</style>

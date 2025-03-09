@@ -1,0 +1,92 @@
+<% layout('layouts/boilerplate') -%>
+
+<style>
+  /* body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f7f7f7;
+  } */
+
+ .container1 {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+ .form-control {
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out;
+  }
+
+ .form-control:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25);
+  }
+
+ .form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+ .valid-feedback {
+    font-size: 14px;
+    color: #28a745;
+    margin-top: 5px;
+  }
+
+ .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+ .btn-success:hover {
+    background-color: #2e865f;
+  }
+</style>
+
+<div class="container1">
+  <form action="/products" method="POST" novalidate>
+    <div class="mb-3">
+      <label class="form-label" for="name">Name :</label>
+      <input class="form-control" type="text" name="name" id="name" placeholder="Product Name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="img">Image URL :</label>
+      <input class="form-control" type="text" name="img" id="img" placeholder="Product Image URL" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="price">Price :</label>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">$</span>
+        <input type="text" name="price" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="desc">Description :</label>
+      <textarea class="form-control" name="desc" id="desc" rows="5" required></textarea>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+</div>

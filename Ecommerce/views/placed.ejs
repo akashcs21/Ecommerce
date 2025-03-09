@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> ORDER PLACED </title>
+    <!-- favicon -->
+    <link rel="icon" href="https://yt3.ggpht.com/a/AGF-l78km1YyNXmF0r3-0CycCA0HLA_i6zYn_8NZEg=s900-c-k-c0xffffffff-no-rj-mo" type="image/gif" sizes="16x16">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./place.css">
+</head>
+
+<style>
+    
+#orderContainer
+{
+    font-family: 'Lato', sans-serif;
+    width: 80%;
+    padding-top: 250px;
+    padding-bottom: 150px;
+    margin: auto;
+    text-align: center;
+}
+#orderContainer i
+{
+    color: rgb(5, 187, 5);
+    padding-bottom: 30px;
+    font-size: 10em;
+}
+#aboutCheck p
+{
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+#aboutCheck h1
+{
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+
+/* ----------------------------- MEDIA QUERY --------------------------- */
+
+@media(max-width: 700px)
+{
+    #orderContainer i
+    {
+        font-size: 8em;
+        padding-bottom: 30px;
+    }
+    h1
+    {
+        font-size: 18px;
+    }
+    p
+    {
+        font-size: 15px;
+    }
+}
+</style>
+<body>  
+    
+
+    <!-- OREDER PLACED -->
+    <div id="orderContainer">
+        <div id="check"><i class="fas fa-check-circle"></i></div>
+        
+        <div id="aboutCheck">
+            <h1> Order Placed Successfully! </h1>
+            <p> We've sent you an email with the Order details. </p>
+        </div>
+    </div>
+       
+</body>
+<script src="/place.js"></script>
+</html>
